@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if (it.resultCode == Activity.RESULT_OK) {
                 val returnString = it.data!!.getStringExtra("input")
                 binding.name.text = returnString
-                Log.d(TAG, "Text: $binding.name")
-
-
             }
         }
 
