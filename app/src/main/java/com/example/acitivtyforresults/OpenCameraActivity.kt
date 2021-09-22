@@ -11,7 +11,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.example.acitivtyforresults.databinding.ActivityMainBinding
 
 class OpenCameraActivity : AppCompatActivity(), View.OnClickListener {
@@ -24,7 +23,7 @@ class OpenCameraActivity : AppCompatActivity(), View.OnClickListener {
         private val TAG = "MainActivity"
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+            binding = ActivityMainBinding.inflate(layoutInflater)
 
             binding.btn.setOnClickListener(this)
         }

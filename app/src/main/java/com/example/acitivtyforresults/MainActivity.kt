@@ -3,21 +3,22 @@ package com.example.acitivtyforresults
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.example.acitivtyforresults.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
 
     private val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        binding
         binding.btn.setOnClickListener(this)
     }
 
@@ -35,8 +36,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0) {
             binding.btn -> {
-                val i = Intent(this , SecondActivity::class.java)
+                val i = Intent(this, SecondActivity::class.java)
                 getResult.launch(i)
+//            }
             }
         }
     }
