@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley.newRequestQueue
 import com.example.acitivtyforresults.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
+
 
     private val TAG = "MainActivity"
 
@@ -20,6 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding
         binding.btn.setOnClickListener(this)
+        binding.get.setOnClickListener(this)
     }
 
 
@@ -34,12 +39,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     override fun onClick(p0: View?) {
+
         when (p0) {
             binding.btn -> {
                 val i = Intent(this, SecondActivity::class.java)
                 getResult.launch(i)
-//            }
+            }
+            binding.get -> {
+                stringRequest()
+
             }
         }
     }
+
+    private fun stringRequest() {
+        val queue = newRequestQueue(this)
+        val url = "https://www.google.com"
+
+        val stringRequest = StringRequest(Request.Method.GET, url,
+            { response ->
+                binding.name.text = "Response is Complete"
+            },
+            {
+                binding.name.text = "That didn't work!"
+            })
+        queue.add(stringRequest)
+    }
+
 }
