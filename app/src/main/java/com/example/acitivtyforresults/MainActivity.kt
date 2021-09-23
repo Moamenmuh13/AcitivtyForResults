@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding
         binding.btn.setOnClickListener(this)
         binding.get.setOnClickListener(this)
     }
@@ -39,7 +38,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     override fun onClick(p0: View?) {
-
         when (p0) {
             binding.btn -> {
                 val i = Intent(this, SecondActivity::class.java)

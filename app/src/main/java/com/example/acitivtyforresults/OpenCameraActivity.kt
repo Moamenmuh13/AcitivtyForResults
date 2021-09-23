@@ -11,11 +11,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.acitivtyforresults.databinding.ActivityCameraBinding
 import com.example.acitivtyforresults.databinding.ActivityMainBinding
 
 class OpenCameraActivity : AppCompatActivity(), View.OnClickListener {
 
-        private lateinit var binding: ActivityMainBinding
+        private lateinit var binding: ActivityCameraBinding
 
         private val CAMERA_REQUEST = 1888
         private val MY_CAMERA_PERMISSION_CODE = 100
@@ -23,7 +24,7 @@ class OpenCameraActivity : AppCompatActivity(), View.OnClickListener {
         private val TAG = "MainActivity"
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            binding = ActivityMainBinding.inflate(layoutInflater)
+            binding = ActivityCameraBinding.inflate(layoutInflater)
             setContentView(binding.root)
             binding.btn.setOnClickListener(this)
         }
@@ -70,7 +71,7 @@ class OpenCameraActivity : AppCompatActivity(), View.OnClickListener {
             super.onActivityResult(requestCode, resultCode, data)
             if (requestCode === CAMERA_REQUEST && resultCode === RESULT_OK) {
                 val photo: Bitmap = data?.extras?.get("data") as Bitmap
-//                binding.name.setImageBitmap(photo)
+                binding.img.setImageBitmap(photo)
             }
         }
 
